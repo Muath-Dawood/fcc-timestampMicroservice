@@ -28,7 +28,7 @@ app.get("/api/:date?", (req, res) => {
   if(!req.params.date) {
     console.log("no date param")
     res.json({
-      utc: new Date(Date.now()).toString(),
+      utc: new Date(Date.now()).toUTCString(),
       unix: new Date(Date.now()).getTime()
     })
   }else {
@@ -44,14 +44,14 @@ app.get("/api/:date?", (req, res) => {
       }else {
         console.log("valid date string")
         res.json({
-          utc: new Date(req.params.date).toString(),
+          utc: new Date(req.params.date).toUTCString(),
           unix: new Date(req.params.date).getTime()
         })
       }
     }else {
       console.log("valid date number")
       res.json({
-        utc: new Date(parseInt(req.params.date)).toString(),
+        utc: new Date(parseInt(req.params.date)).toUTCString(),
         unix: new Date(parseInt(req.params.date)).getTime()
       })
     }
